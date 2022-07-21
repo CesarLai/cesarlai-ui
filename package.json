@@ -1,0 +1,74 @@
+{
+  "name": "@cesarlai/cesarlai-ui",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "git@github.com:CesarLai/cesarlai-ui.git",
+  "description": "A React UI library.",
+  "author": "Cesar Lai",
+  "scripts": {
+    "eslint": "eslint ./ --ext .ts,.tsx --color --fix",
+    "stylelint": "stylelint src --color --fix",
+    "commit": "git-cz"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@svgr/webpack": "^6.2.1",
+    "@types/classnames": "^2.2.11",
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/webpack-env": "^1.16.4",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "commitizen": "^4.2.3",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.7.1",
+    "sass": "^1.42.1",
+    "stylelint": "^13.0.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-scss": "^4.3.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.21.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run eslint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*{.js,.jsx,.ts,.tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*{.css,.scss}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  }
+}
