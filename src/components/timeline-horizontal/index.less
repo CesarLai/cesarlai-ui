@@ -1,0 +1,99 @@
+@container-height: 120px;
+
+@item-width: 60px;
+
+@item-point-size: 16px;
+@item-point-border-width: 2px;
+
+@item-title-height: 40px;
+
+@line-width: calc(100% - @item-width);
+@line-height: 2px;
+@line-top: calc((@container-height - @item-title-height - @line-height) * 0.5);
+@line-left: calc(@item-width / 2);
+
+@color-default: rgb(61, 128, 222);
+@color-positive: #52c41a;
+@color-negative: #ff4d4f;
+@color-inactive: rgba(0, 0, 0, 0.25);
+
+.timeline-horizontal {
+    display: flex;
+    justify-content: center;
+    min-width: 150px;
+
+    &-inner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        height: @container-height;
+    }
+
+    &-item {
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: @item-width;
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        &-title {
+            flex-shrink: 0;
+            height: @item-title-height;
+            line-height: @item-title-height;
+            color: #333333;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &-point {
+            width: @item-point-size;
+            height: @item-point-size;
+            border: @item-point-border-width solid transparent;
+            background: #ffffff;
+            border-radius: 50%;
+
+            &-default {
+                border-color: @color-default;
+            }
+
+            &-gray {
+                border-color: @color-inactive;
+            }
+
+            &-error {
+                border-color: @color-negative;
+            }
+
+            &-success {
+                border-color: @color-positive;
+            }
+
+            &-loading {
+                border: none;
+                color: @color-positive;
+                font-size: @item-point-size;
+            }
+        }
+    }
+
+    &-line {
+        position: absolute;
+        z-index: 1;
+        top: @line-top;
+        left: @line-left;
+        width: @line-width;
+        height: @line-height;
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+}
